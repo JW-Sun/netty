@@ -44,7 +44,10 @@ public class NioServer {
                 if (key.isAcceptable()) {
                     // 如果是OP_ACCEPT,有新的客户端进行连接
                     SocketChannel socketChannel = serverSocketChannel.accept();
+                    System.out.println("客户端连接成功，生成一个socketChannel=" + socketChannel.hashCode());
 
+                    // 将socketChannel设置为非阻塞
+                    socketChannel.configureBlocking(false);
                     // 注册到selector上,关注事件为READ， 同时给channel关联一个buffer
                     socketChannel.register(selector, SelectionKey.OP_READ, ByteBuffer.allocate(1024));
                 }
