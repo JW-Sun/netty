@@ -1,16 +1,14 @@
-package com.jw.netty07_groupChar;
+package com.jw.netty07_groupChat;
 
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.SelectableChannel;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Scanner;
-import java.util.Set;
 
 public class GroupChatClient {
 

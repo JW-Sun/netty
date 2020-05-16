@@ -35,7 +35,7 @@ public class NioServer {
             // 如果返回的大于0，获取到相关的selection集合
             // 如果返回的值>0，那么就获取到相关的selectionKey集合
             Set<SelectionKey> selectionKeys = selector.selectedKeys();
-            Iterator<SelectionKey> keyIterator= selectionKeys.iterator();
+            Iterator<SelectionKey> keyIterator = selectionKeys.iterator();
 
             while (keyIterator.hasNext()) {
                 // 获取到selectionKey

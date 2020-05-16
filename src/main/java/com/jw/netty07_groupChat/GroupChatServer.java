@@ -1,4 +1,4 @@
-package com.jw.netty07_groupChar;
+package com.jw.netty07_groupChat;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
