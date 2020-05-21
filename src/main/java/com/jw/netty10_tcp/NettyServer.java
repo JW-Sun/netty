@@ -4,10 +4,11 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
+import io.netty.channel.nio.NioEventLoop;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-// 45 46
+// 45 46 47 48 49 50
 public class NettyServer {
     public static void main(String[] args) throws InterruptedException {
 
@@ -16,6 +17,8 @@ public class NettyServer {
         // bossGroup仅处理连接请求
         // 真正的业务处理交给workerGroup处理
         // 两个都是无限循环
+        /* 4. bossGroup和workerGroup含有的子线程（NioEventLoop）的个数，默认实际为cpu核数*2 这里就是8个
+        *     如果新增客户端，就增加这个处理的线程。并且12345678之后会循环利用1（类似round-robin） */
         NioEventLoopGroup bossGroup = new NioEventLoopGroup();
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
 
@@ -32,6 +35,8 @@ public class NettyServer {
                         // 给pipeline设置处理器
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
+                            // 可以使用一个集合管理SocketChannel
+                            System.out.println("客户socketChannel hashcode = " + ch.hashCode());
                             ch.pipeline().addLast(new NettyServerHandler());
                         }
                     });
