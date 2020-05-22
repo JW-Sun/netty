@@ -8,7 +8,7 @@ import io.netty.channel.nio.NioEventLoop;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-// 45 46 47 48 49 50
+// 45 46 47 48 49 50 51 52
 public class NettyServer {
     public static void main(String[] args) throws InterruptedException {
 
